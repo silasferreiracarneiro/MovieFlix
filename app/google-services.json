@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "120633274310",
+    "firebase_url": "https://movie-flix-e63b2.firebaseio.com",
+    "project_id": "movie-flix-e63b2",
+    "storage_bucket": "movie-flix-e63b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120633274310:android:6cedf4fb9f3616b4a70cc7",
+        "android_client_info": {
+          "package_name": "br.com.silas.carneiro.movieflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120633274310-sais9mhbpf0c0iojgqdr809ksf3mhv27.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.silas.carneiro.movieflix",
+            "certificate_hash": "9fd85c2d2180f7c430d6e6bb03abff74f153c6d5"
+          }
+        },
+        {
+          "client_id": "120633274310-5rvr9bpv6jeb4ij1bmlr9ap1ai5rhprf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi80Graf4RlKPRJXptr52avOQ2yZfIY7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120633274310-5rvr9bpv6jeb4ij1bmlr9ap1ai5rhprf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

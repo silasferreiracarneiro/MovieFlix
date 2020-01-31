@@ -5,8 +5,10 @@ class AppConstant {
     companion object {
         val URL_BASE: String = ""
 
-
         //PREFERENCES
-        val PREF_NAME: String = ""
+        val PREF_NAME: String = "PREFS"
+
+        //FIREBASE
+        val USER: String = "USER"
     }
 }

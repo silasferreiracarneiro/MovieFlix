@@ -1,13 +1,34 @@
 package br.com.silas.carneiro.movieflix.ui.register
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import br.com.silas.carneiro.movieflix.R
+import br.com.silas.carneiro.movieflix.ui.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_register.*
+import javax.inject.Inject
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseActivity(), RegisterContract.View {
+
+    @Inject
+    lateinit var presenter : RegisterContract.Presenter<RegisterContract.View, RegisterContract.Interactor>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        getActivityComponent().inject(this)
+        presenter.onAttach(this)
+    }
+
+    override fun getAccountList() {
+        //startActivity(Intent(this, AccountListActivity::class.java))
+    }
+
+    fun saveProfile(view: View){
+        var name = edtNome?.text.toString()
+        var email = edtEmail?.text.toString()
+        var password = extPassword?.text.toString()
+
+        this.presenter.register(name, email, password)
     }
 }
