@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "br.com.silas.carneiro.movieflix"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext.coroutinescore}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.coroutinesandroid}"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${rootProject.ext.coroutinesadapter}"
+
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat}"
+    implementation "androidx.core:core-ktx:${rootProject.ext.corektx}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout}"
+
+    implementation "com.google.android.material:material:${rootProject.ext.material}"
+    implementation "androidx.vectordrawable:vectordrawable:${rootProject.ext.vectordrawable}"
+    implementation "androidx.navigation:navigation-fragment:${rootProject.ext.navigationFragment}"
+    implementation "androidx.navigation:navigation-ui:${rootProject.ext.navigationUi}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.lifecycleExtensions}"
+    implementation "androidx.navigation:navigation-fragment-ktx:${rootProject.ext.navigationFragmenteKtx}"
+    implementation "androidx.navigation:navigation-ui-ktx:${rootProject.ext.navigationUiKtx}"
+
+    implementation "androidx.legacy:legacy-support-v4:${rootProject.ext.legacysupport}"
+
+
+    implementation "com.github.AppIntro:AppIntro:${rootProject.ext.carousel}"
+
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.gson}"
+    implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp}"
+
+    implementation "com.google.dagger:dagger-android:${rootProject.ext.dagger}"
+    implementation "com.google.dagger:dagger-android-support:${rootProject.ext.dagger}"
+    implementation "com.google.firebase:firebase-core:${rootProject.ext.firebasecore}"
+    implementation "com.google.firebase:firebase-auth:${rootProject.ext.firebaseauth}"
+    implementation "com.google.android.gms:play-services-auth:${rootProject.ext.playservicesauth}"
+    implementation "com.google.firebase:firebase-database:${rootProject.ext.databaserealtime}"
+    implementation "com.google.firebase:firebase-storage:${rootProject.ext.firebasestorage}"
+
+    kapt "com.google.dagger:dagger-android-processor:${rootProject.ext.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger}"
+
+    testImplementation "junit:junit:${rootProject.ext.junit}"
+    androidTestImplementation "androidx.test:runner:${rootProject.ext.runner}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espresso}"
+}
