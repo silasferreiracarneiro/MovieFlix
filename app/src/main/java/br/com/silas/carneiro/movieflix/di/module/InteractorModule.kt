@@ -1,17 +1,22 @@
 package br.com.silas.carneiro.movieflix.di.module
 
-import androidx.appcompat.app.AppCompatActivity
 import br.com.silas.carneiro.movieflix.data.firebase.contract.ApiServiceFirebaseContract
+import br.com.silas.carneiro.movieflix.data.network.contract.ApiContract
+import br.com.silas.carneiro.movieflix.data.prefs.PreferencesHelper
 import br.com.silas.carneiro.movieflix.di.PerActivity
+import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
+import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieInteractor
 import br.com.silas.carneiro.movieflix.ui.login.LoginContract
 import br.com.silas.carneiro.movieflix.ui.login.LoginInteractor
 import br.com.silas.carneiro.movieflix.ui.register.RegisterContract
 import br.com.silas.carneiro.movieflix.ui.register.RegisterInteractor
+import br.com.silas.carneiro.movieflix.ui.splash.SplashContract
+import br.com.silas.carneiro.movieflix.ui.splash.SplashInteractor
 import dagger.Module
 import dagger.Provides
 
 @Module
-class InteractorModule(var appCompatActivity: AppCompatActivity) {
+class InteractorModule {
 
     @Provides
     @PerActivity
@@ -19,5 +24,13 @@ class InteractorModule(var appCompatActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    fun provideLogin(api: ApiServiceFirebaseContract): LoginContract.Interactor = LoginInteractor(api)
+    fun provideLogin(api: ApiServiceFirebaseContract, apiPref: PreferencesHelper): LoginContract.Interactor = LoginInteractor(api, apiPref)
+
+    @Provides
+    @PerActivity
+    fun provideSplash(api: ApiServiceFirebaseContract, apiPref: PreferencesHelper): SplashContract.Interactor = SplashInteractor(api, apiPref)
+
+    @Provides
+    @PerActivity
+    fun provideHomeMovie(api: ApiContract): HomeMovieContract.Interactor = HomeMovieInteractor(api)
 }

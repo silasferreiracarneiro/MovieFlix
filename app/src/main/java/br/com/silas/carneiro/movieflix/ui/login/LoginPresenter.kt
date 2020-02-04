@@ -11,16 +11,26 @@ class LoginPresenter<V: LoginContract.View, I: LoginContract.Interactor>
     override fun login(email: String, password: String) {
         if(validateLogin(email, password)){
 
-            var user = User()
+            val user = User()
             user.email = email
             user.password = password
 
             this.interactorLogin.login(user, onSucess = {
-
+                savedUserInPrefes(user)
             }, onError = {
-
+                getMvpView().showMessage(it)
             })
         }
+    }
+
+    private fun savedUserInPrefes(user: User) {
+        this.interactorLogin.saveUserPrefes(user, onSucess = {
+            getMvpView().goHome()
+            getMvpView().onFinish()
+        }, onError = {
+            getMvpView().showMessage("Erro ao efetuar o login.")
+        })
+
     }
 
     private fun validateLogin(email: String, password: String): Boolean {

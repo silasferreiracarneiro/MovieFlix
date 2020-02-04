@@ -1,16 +1,63 @@
 package br.com.silas.carneiro.movieflix.ui.home
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import br.com.silas.carneiro.movieflix.R
+import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieFragment
+import br.com.silas.carneiro.movieflix.ui.home.more.MoreFragment
+import com.google.android.material.bottomappbar.BottomAppBar
+import kotlinx.android.synthetic.main.activity_home.*
+
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        setUpBottomAppBar()
+        defaultFragment()
+        fabSearch.setOnClickListener{
+            Toast.makeText(this, "Atenção", Toast.LENGTH_SHORT).show()
+        }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.bottom_nav_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId) {
+            android.R.id.home -> {
+                defaultFragment()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun defaultFragment() {
+        val beginTransaction = supportFragmentManager.beginTransaction()
+        beginTransaction.replace(R.id.frame_container, HomeMovieFragment())
+        beginTransaction.commit()
+    }
+
+    private fun setUpBottomAppBar() {
+        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
+        setSupportActionBar(bottomAppBar)
+
+        bottomAppBar.setOnMenuItemClickListener { item ->
+            when (item?.itemId) {
+                R.id.navigation_details -> {
+                    val bottomNavDrawerFragment = MoreFragment()
+                    bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
+                }
+            }
+            false
+        }
     }
 }

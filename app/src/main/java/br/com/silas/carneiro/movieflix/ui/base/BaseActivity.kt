@@ -22,9 +22,9 @@ abstract class BaseActivity: AppCompatActivity(), MvpView {
         super.onCreate(savedInstanceState)
 
         mActivityComponent = DaggerActivityComponent.builder()
-            .interactorModule(InteractorModule(this))
-            .presenterModule(PresenterModule(this))
-            .dataModule(DataModule(this))
+            .interactorModule(InteractorModule())
+            .presenterModule(PresenterModule())
+            .dataModule(DataModule())
             .applicationComponent((application as App).getComponent())
             .build()
     }
@@ -40,12 +40,28 @@ abstract class BaseActivity: AppCompatActivity(), MvpView {
         }
     }
 
+    override fun showMessage(resId: Int) {
+        showMessage(getString(resId))
+    }
+
     override fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showMessage(id: Int) {
-        showMessage(getString(id))
+    override fun onError(resId: Int) {
+        showMessage(getString(resId))
+    }
+
+    override fun onError(message: String) {
+        showMessage(message)
+    }
+
+    override fun alterPermission() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun validatedPermissions() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onGetString(id: Int): String {

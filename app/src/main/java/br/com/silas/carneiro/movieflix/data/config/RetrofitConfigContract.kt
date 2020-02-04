@@ -1,7 +1,7 @@
 package br.com.silas.carneiro.movieflix.data.config
 
-import br.com.silas.carneiro.movieflix.data.network.ApiService
+import br.com.silas.carneiro.movieflix.data.network.service.ApiService
 
 interface RetrofitConfigContract {
-    val api: ApiService
+    var api: ApiService
 }

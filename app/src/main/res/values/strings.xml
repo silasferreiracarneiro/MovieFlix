@@ -14,8 +14,7 @@
     <string name="logar">Logar</string>
     <string name="cadastre">Cadastre-se</string>
     <string name="error_default">Opss, algo deu errado, tente novamente mais tarde!</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Detalhes</string>
+    <string name="profile">Perfil</string>
 </resources>

@@ -25,9 +25,9 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
     }
 
     fun saveProfile(view: View){
-        var name = edtNome?.text.toString()
-        var email = edtEmail?.text.toString()
-        var password = extPassword?.text.toString()
+        val name = edtNome?.text.toString()
+        val email = edtEmail?.text.toString()
+        val password = extPassword?.text.toString()
 
         this.presenter.register(name, email, password)
     }

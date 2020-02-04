@@ -17,12 +17,10 @@ BasePresenter<V, I>(interactorRegister), RegisterContract.Presenter<V, I> {
 
         if (validateUser(user)) {
             this.interactorRegister.register(user, onSucess = {
-                getMvpView().showLoading()
                 getMvpView().showMessage(it)
                 getMvpView().onFinish()
             }, onError = {
                 getMvpView().showMessage(it)
-                getMvpView().hideLoading()
             })
         }
     }
