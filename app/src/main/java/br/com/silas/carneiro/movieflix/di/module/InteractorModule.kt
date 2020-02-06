@@ -6,6 +6,8 @@ import br.com.silas.carneiro.movieflix.data.prefs.PreferencesHelper
 import br.com.silas.carneiro.movieflix.di.PerActivity
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieInteractor
+import br.com.silas.carneiro.movieflix.ui.home.search.SearchContract
+import br.com.silas.carneiro.movieflix.ui.home.search.SearchInteractor
 import br.com.silas.carneiro.movieflix.ui.login.LoginContract
 import br.com.silas.carneiro.movieflix.ui.login.LoginInteractor
 import br.com.silas.carneiro.movieflix.ui.register.RegisterContract
@@ -33,4 +35,8 @@ class InteractorModule {
     @Provides
     @PerActivity
     fun provideHomeMovie(api: ApiContract): HomeMovieContract.Interactor = HomeMovieInteractor(api)
+
+    @Provides
+    @PerActivity
+    fun provideSearch(api: ApiContract): SearchContract.Interactor = SearchInteractor(api)
 }

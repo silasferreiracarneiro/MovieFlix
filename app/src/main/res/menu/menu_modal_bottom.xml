@@ -8,5 +8,10 @@
             android:icon="@drawable/ic_person_white_24dp"
             android:title="@string/profile" />
 
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_arrow_white_24dp"
+            android:title="@string/logout" />
+
     </group>
 </menu>

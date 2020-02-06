@@ -17,4 +17,6 @@
     <string name="title_activity_home">Home</string>
     <string name="title_home">Detalhes</string>
     <string name="profile">Perfil</string>
+    <string name="search_movie">Buscar Filme</string>
+    <string name="logout">Sair</string>
 </resources>

@@ -8,6 +8,7 @@ import android.widget.Toast
 import br.com.silas.carneiro.movieflix.R
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieFragment
 import br.com.silas.carneiro.movieflix.ui.home.more.MoreFragment
+import br.com.silas.carneiro.movieflix.ui.home.search.SearchFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -20,7 +21,8 @@ class HomeActivity : AppCompatActivity() {
         setUpBottomAppBar()
         defaultFragment()
         fabSearch.setOnClickListener{
-            Toast.makeText(this, "Atenção", Toast.LENGTH_SHORT).show()
+            val bottomNavDrawerFragment = SearchFragment()
+            bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
         }
     }
 

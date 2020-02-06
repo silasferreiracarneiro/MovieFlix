@@ -3,6 +3,8 @@ package br.com.silas.carneiro.movieflix.di.module
 import br.com.silas.carneiro.movieflix.di.PerActivity
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMoviePresenter
+import br.com.silas.carneiro.movieflix.ui.home.search.SearchContract
+import br.com.silas.carneiro.movieflix.ui.home.search.SearchPresenter
 import br.com.silas.carneiro.movieflix.ui.login.LoginContract
 import br.com.silas.carneiro.movieflix.ui.login.LoginPresenter
 import br.com.silas.carneiro.movieflix.ui.register.RegisterContract
@@ -35,4 +37,8 @@ class PresenterModule {
     fun provideHomeMovie(interactor: HomeMovieContract.Interactor):
             HomeMovieContract.Presenter<HomeMovieContract.View, HomeMovieContract.Interactor> = HomeMoviePresenter(interactor)
 
+    @Provides
+    @PerActivity
+    fun provideSearch(interactor: SearchContract.Interactor):
+            SearchContract.Presenter<SearchContract.View, SearchContract.Interactor> = SearchPresenter(interactor)
 }
