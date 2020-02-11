@@ -3,20 +3,20 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="br.com.silas.carneiro.movieflix">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <dist:module dist:instant="true" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".App"
         android:theme="@style/AppThemeNoBar">
-        <activity
-            android:name=".ui.splash.SplashActivity">
+        <activity android:name=".ui.detail.DetailActivity"></activity>
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

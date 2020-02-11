@@ -1,5 +1,6 @@
 package br.com.silas.carneiro.movieflix.data.config
 
+import br.com.silas.carneiro.movieflix.data.network.contract.Api
 import br.com.silas.carneiro.movieflix.data.network.service.ApiService
 import br.com.silas.carneiro.movieflix.utils.AppConstant.Companion.URL_BASE
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -16,6 +17,6 @@ class RetrofitConfig: RetrofitConfigContract {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    override var api: ApiService = getIntanceRetrofit().create(
-        ApiService::class.java)
+    override var api: Api = getIntanceRetrofit().create(
+        Api::class.java)
 }

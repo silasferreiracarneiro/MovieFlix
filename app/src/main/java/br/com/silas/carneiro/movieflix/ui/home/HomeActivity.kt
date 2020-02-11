@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import br.com.silas.carneiro.movieflix.R
+import br.com.silas.carneiro.movieflix.ui.base.BaseActivity
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieFragment
 import br.com.silas.carneiro.movieflix.ui.home.more.MoreFragment
 import br.com.silas.carneiro.movieflix.ui.home.search.SearchFragment
@@ -13,7 +14,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.activity_home.*
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

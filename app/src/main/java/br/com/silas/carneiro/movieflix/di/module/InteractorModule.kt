@@ -4,6 +4,8 @@ import br.com.silas.carneiro.movieflix.data.firebase.contract.ApiServiceFirebase
 import br.com.silas.carneiro.movieflix.data.network.contract.ApiContract
 import br.com.silas.carneiro.movieflix.data.prefs.PreferencesHelper
 import br.com.silas.carneiro.movieflix.di.PerActivity
+import br.com.silas.carneiro.movieflix.ui.detail.DetailContract
+import br.com.silas.carneiro.movieflix.ui.detail.DetailInteractor
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieInteractor
 import br.com.silas.carneiro.movieflix.ui.home.search.SearchContract
@@ -39,4 +41,8 @@ class InteractorModule {
     @Provides
     @PerActivity
     fun provideSearch(api: ApiContract): SearchContract.Interactor = SearchInteractor(api)
+
+    @Provides
+    @PerActivity
+    fun provideDetail(api: ApiContract): DetailContract.Interactor = DetailInteractor(api)
 }

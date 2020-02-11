@@ -43,6 +43,8 @@ ext{
     navigationFragmenteKtx = "2.2.0"
     navigationUiKtx = "2.2.0"
 
+    multidex = "multidex"
+    glide = "4.11.0"
     carousel = "5.1.0"
     retrofit = "2.5.0"
     gson = "2.5.0"

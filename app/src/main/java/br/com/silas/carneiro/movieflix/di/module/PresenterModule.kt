@@ -1,6 +1,8 @@
 package br.com.silas.carneiro.movieflix.di.module
 
 import br.com.silas.carneiro.movieflix.di.PerActivity
+import br.com.silas.carneiro.movieflix.ui.detail.DetailContract
+import br.com.silas.carneiro.movieflix.ui.detail.DetailPresenter
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMoviePresenter
 import br.com.silas.carneiro.movieflix.ui.home.search.SearchContract
@@ -19,26 +21,31 @@ class PresenterModule {
 
     @Provides
     @PerActivity
-    fun provideRegister(interactorRegister: RegisterContract.Interactor):
+    fun provideRegisterPresenter(interactorRegister: RegisterContract.Interactor):
             RegisterContract.Presenter<RegisterContract.View, RegisterContract.Interactor> = RegisterPresenter(interactorRegister)
 
     @Provides
     @PerActivity
-    fun provideLogin(interactor: LoginContract.Interactor):
+    fun provideLoginPresenter(interactor: LoginContract.Interactor):
             LoginContract.Presenter<LoginContract.View, LoginContract.Interactor> =  LoginPresenter(interactor)
 
     @Provides
     @PerActivity
-    fun provideSplash(interactor: SplashContract.Interactor):
+    fun provideSplashPresenter(interactor: SplashContract.Interactor):
             SplashContract.Presenter<SplashContract.View, SplashContract.Interactor> =  SplashPresenter(interactor)
 
     @Provides
     @PerActivity
-    fun provideHomeMovie(interactor: HomeMovieContract.Interactor):
+    fun provideHomeMoviePresenter(interactor: HomeMovieContract.Interactor):
             HomeMovieContract.Presenter<HomeMovieContract.View, HomeMovieContract.Interactor> = HomeMoviePresenter(interactor)
 
     @Provides
     @PerActivity
-    fun provideSearch(interactor: SearchContract.Interactor):
+    fun provideSearchPresenter(interactor: SearchContract.Interactor):
             SearchContract.Presenter<SearchContract.View, SearchContract.Interactor> = SearchPresenter(interactor)
+
+    @Provides
+    @PerActivity
+    fun provideDetailPresenter(interactor: DetailContract.Interactor):
+            DetailContract.Presenter<DetailContract.View, DetailContract.Interactor> = DetailPresenter(interactor)
 }

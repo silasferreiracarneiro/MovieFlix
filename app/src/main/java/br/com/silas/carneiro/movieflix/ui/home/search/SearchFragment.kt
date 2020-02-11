@@ -1,23 +1,39 @@
 package br.com.silas.carneiro.movieflix.ui.home.search
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.SearchView
+import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.silas.carneiro.movieflix.R
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import br.com.silas.carneiro.movieflix.data.network.model.MovieResponse
+import br.com.silas.carneiro.movieflix.ui.base.BaseBottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_more.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
+import javax.inject.Inject
 
-class SearchFragment : BottomSheetDialogFragment() {
+class SearchFragment : BaseBottomSheetDialogFragment(), SearchContract.View {
+
+    @Inject
+    lateinit var presenter: SearchContract.Presenter<SearchContract.View, SearchContract.Interactor>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
+
+        val component = getActivityComponent()
+
+        if(component != null){
+            component.inject(this)
+            presenter.onAttach(this)
+        }
+
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogTheme)
+
+        view.resultSearch.setHasFixedSize(true)
+        view.resultSearch.layoutManager = LinearLayoutManager(activity)
+        view.resultSearch.isNestedScrollingEnabled = false
 
         view.search.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -25,10 +41,11 @@ class SearchFragment : BottomSheetDialogFragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-//                if(newText?.length!! >= 3){
-//                    presenter.searchUser(newText)
-//                }
-//                setListUser(arrayListOf())
+                newText?.let {
+                    if(it.length >= 3){
+                        presenter.searchMovie(it)
+                    }
+                }
                 return true
             }
         })
@@ -44,32 +61,14 @@ class SearchFragment : BottomSheetDialogFragment() {
         }
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+    override fun setUp(view: View) {
 
-        dialog.setOnShowListener { dialog ->
-            val d = dialog as BottomSheetDialog
-
-            val bottomSheet = d.findViewById<View>(R.id.design_bottom_sheet) as FrameLayout?
-            val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet!!)
-            bottomSheetBehavior.setBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    if (slideOffset > 0.5) {
-                        close_imageview.visibility = View.VISIBLE
-                    } else {
-                        close_imageview.visibility = View.GONE
-                    }
-                }
-
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    when (newState) {
-                        BottomSheetBehavior.STATE_HIDDEN-> dismiss()
-                        else -> close_imageview.visibility = View.VISIBLE
-                    }
-                }
-            })
-        }
-
-        return dialog
     }
+
+    override fun setListMovie(movie: MovieResponse) {
+        view?.resultSearch?.adapter = SearchAdapter(movie)
+        (view?.resultSearch?.adapter as SearchAdapter).notifyDataSetChanged()
+    }
+
+
 }
