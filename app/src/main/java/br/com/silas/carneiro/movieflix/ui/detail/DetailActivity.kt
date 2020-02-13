@@ -1,5 +1,6 @@
 package br.com.silas.carneiro.movieflix.ui.detail
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -9,8 +10,10 @@ import br.com.silas.carneiro.movieflix.data.network.model.DetailMovieResponse
 import br.com.silas.carneiro.movieflix.data.network.model.MovieResultResponse
 import br.com.silas.carneiro.movieflix.data.network.model.TrailerResponse
 import br.com.silas.carneiro.movieflix.ui.base.BaseActivity
+import br.com.silas.carneiro.movieflix.ui.play.PlayMovieActivity
 import br.com.silas.carneiro.movieflix.utils.AppConstant
 import br.com.silas.carneiro.movieflix.utils.AppConstant.Companion.ITEM_SEARCH_MOVIE
+import br.com.silas.carneiro.movieflix.utils.AppConstant.Companion.VIDEO_ID
 import br.com.silas.carneiro.movieflix.utils.convertDate
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -47,8 +50,12 @@ class DetailActivity : BaseActivity(), DetailContract.View {
 
         playMovie.setOnClickListener {
 
-            if(this.trailers.results.isNotEmpty()){
-                //startActivity()
+            if(this.trailers?.results != null){
+                var intent = Intent(this, PlayMovieActivity::class.java)
+                intent.putExtra(VIDEO_ID, this.trailers.results[0].key)
+                startActivity(intent)
+            } else {
+                showMessage(getString(R.string.error_trailer))
             }
         }
 

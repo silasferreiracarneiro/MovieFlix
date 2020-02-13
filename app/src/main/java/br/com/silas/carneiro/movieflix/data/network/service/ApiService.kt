@@ -7,13 +7,13 @@ import br.com.silas.carneiro.movieflix.data.network.model.DetailMovieResponse
 import br.com.silas.carneiro.movieflix.data.network.model.MovieResponse
 import br.com.silas.carneiro.movieflix.data.network.model.TrailerResponse
 import br.com.silas.carneiro.movieflix.utils.AppConstant
-import java.util.ArrayList
 
 class ApiService: BaseRepository(), ApiContract {
 
     private var service: RetrofitConfig = RetrofitConfig()
 
-    private val language = "pt_BR"
+    private val languagePortuguese = "pt_BR"
+    private val languageEnglish = "en-US"
 
     override suspend fun searchMovie(text: String): MovieResponse? {
 
@@ -21,7 +21,7 @@ class ApiService: BaseRepository(), ApiContract {
             call = {
                 service.api.getMovie(
                 AppConstant.API_KEY,
-                language,
+                languagePortuguese,
                 text,
                 1
             ).await() },
@@ -35,7 +35,7 @@ class ApiService: BaseRepository(), ApiContract {
                 service.api.getDetailMovie(
                     id,
                     AppConstant.API_KEY,
-                    language
+                    languagePortuguese
                 ).await()
             },
             errorMessage = "Erro ao buscar o detalhe do filme!"
@@ -47,9 +47,9 @@ class ApiService: BaseRepository(), ApiContract {
             call = {
                 service.api.getTrailer(
                     id,
-                    "",
+                    "videos",
                     AppConstant.API_KEY,
-                    language
+                    languageEnglish
                 ).await()
             },
             errorMessage = "Erro ao buscar os trailers do filme!"

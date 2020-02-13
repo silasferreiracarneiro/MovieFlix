@@ -28,6 +28,7 @@ open class BaseRepository {
 
         Log.d("ERROR_CALL_API_URL","URL: "+response.raw().request().url())
         Log.e("ERROR_CALL_API_CODE", response.code().toString())
+        Log.e("BODY_REQUEST", "BODY "+response.body())
         return when {
             !response.isSuccessful -> Result.Error(IOException("Error Occurred during getting safe Api result, Custom ERROR - $errorMessage"))
             body == null -> Result.Error(IOException("NOT FOUND"))

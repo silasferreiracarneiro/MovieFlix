@@ -30,10 +30,10 @@ interface Api {
 
 
     @Headers("Content-Type: application/json")
-    @GET("/3/movie/{id}")
+    @GET("/3/movie/{id}/{videos}")
     fun getTrailer(
         @Path("id") movieId: Int,
-        @Query("videos") videos: String,
+        @Path("videos") videos: String,
         @Query("api_key") apiKey: String,
         @Query("language") language: String
     ): Deferred<Response<TrailerResponse>>
