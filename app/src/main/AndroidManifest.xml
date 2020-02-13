@@ -4,6 +4,8 @@
     package="br.com.silas.carneiro.movieflix">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <dist:module dist:instant="true" />
 

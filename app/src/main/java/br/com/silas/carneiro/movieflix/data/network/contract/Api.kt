@@ -2,6 +2,7 @@ package br.com.silas.carneiro.movieflix.data.network.contract
 
 import br.com.silas.carneiro.movieflix.data.network.model.DetailMovieResponse
 import br.com.silas.carneiro.movieflix.data.network.model.MovieResponse
+import br.com.silas.carneiro.movieflix.data.network.model.TrailerResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET
@@ -26,4 +27,14 @@ interface Api {
         @Query("api_key") apiKey: String,
         @Query("language") language: String
     ): Deferred<Response<DetailMovieResponse>>
+
+
+    @Headers("Content-Type: application/json")
+    @GET("/3/movie/{id}")
+    fun getTrailer(
+        @Path("id") movieId: Int,
+        @Query("videos") videos: String,
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String
+    ): Deferred<Response<TrailerResponse>>
 }

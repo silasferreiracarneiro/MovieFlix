@@ -5,6 +5,7 @@ import br.com.silas.carneiro.movieflix.data.config.RetrofitConfig
 import br.com.silas.carneiro.movieflix.data.network.contract.ApiContract
 import br.com.silas.carneiro.movieflix.data.network.model.DetailMovieResponse
 import br.com.silas.carneiro.movieflix.data.network.model.MovieResponse
+import br.com.silas.carneiro.movieflix.data.network.model.TrailerResponse
 import br.com.silas.carneiro.movieflix.utils.AppConstant
 import java.util.ArrayList
 
@@ -38,6 +39,20 @@ class ApiService: BaseRepository(), ApiContract {
                 ).await()
             },
             errorMessage = "Erro ao buscar o detalhe do filme!"
+        )
+    }
+
+    override suspend fun getTrailer(id: Int): TrailerResponse? {
+        return safeApiCall(
+            call = {
+                service.api.getTrailer(
+                    id,
+                    "",
+                    AppConstant.API_KEY,
+                    language
+                ).await()
+            },
+            errorMessage = "Erro ao buscar os trailers do filme!"
         )
     }
 }

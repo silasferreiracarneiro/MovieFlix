@@ -1,50 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".ui.detail.DetailActivity"
     android:background="?attr/colorPrimaryDark">
 
-    <include
-        android:id="@+id/toolbar_gradient"
-        layout="@layout/toolbar_gradient" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar_gradient">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageBackdrop"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="200dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imageBackdrop"
-            app:layout_constraintTop_toTopOf="@+id/imageBackdrop"
-            app:srcCompat="@drawable/ic_play_circle_outline_white_24dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar_gradient">
+
+            <ImageView
+                android:id="@+id/imageBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/toolbar_gradient"
+            layout="@layout/toolbar_gradient" />
 
         <TextView
             android:id="@+id/txtTitleDatail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            tools:text="@string/app_name" />
+
+        <Button
+            android:id="@+id/playMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textSize="25sp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageBackdrop"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_play_arrow_black_24dp"
+            android:text="Play"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="@string/app_name"/>
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleDatail" />
+
+        <Button
+            android:id="@+id/addList"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_button"
+            android:drawableLeft="@drawable/ic_add_white_24dp"
+            android:gravity="center"
+            android:paddingLeft="11dp"
+            app:layout_constraintStart_toEndOf="@+id/playMovie"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleDatail" />
+
+        <TextView
+            android:id="@+id/txtTitleDateRelease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/playMovie"
+            app:layout_constraintTop_toBottomOf="@+id/playMovie"
+            android:text="@string/date_release" />
+
+        <TextView
+            android:id="@+id/txtDateRelease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/txtTitleDateRelease"
+            app:layout_constraintTop_toBottomOf="@+id/playMovie"
+            tools:text="@string/app_name" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:numStars="5"
+            android:stepSize="1"
+
+            style="?android:attr/ratingBarStyleSmall"
+            android:theme="@style/RatingBar"
+            android:clickable="false"
+            android:backgroundTint="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/txtTitleDateRelease"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleDateRelease" />
+
+        <TextView
+            android:id="@+id/txtResumeMovie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:lineSpacingExtra="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/txtTrailerDisponivel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Trailer Disponível"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtResumeMovie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtResumeMovie" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTrailer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTrailerDisponivel" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

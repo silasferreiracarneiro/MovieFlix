@@ -1,6 +1,7 @@
 package br.com.silas.carneiro.movieflix.data.network.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
 data class DetailMovieResponse (
@@ -20,7 +21,7 @@ data class DetailMovieResponse (
 	@SerializedName("poster_path") val poster_path : String,
 	@SerializedName("production_companyResponses") val production_companyResponses : List<ProductionCompaniesResponse>,
 	@SerializedName("production_countries") val production_countries : List<ProductionCountriesResponse>,
-	@SerializedName("release_date") val release_date : String,
+	@SerializedName("release_date") val release_date : Date,
 	@SerializedName("revenue") val revenue : Int,
 	@SerializedName("runtime") val runtime : Int,
 	@SerializedName("spoken_languages") val spoken_languages : List<SpokenLanguagesResponse>,
