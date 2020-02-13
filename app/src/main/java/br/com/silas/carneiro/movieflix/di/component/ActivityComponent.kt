@@ -6,6 +6,7 @@ import br.com.silas.carneiro.movieflix.di.module.InteractorModule
 import br.com.silas.carneiro.movieflix.di.module.PresenterModule
 import br.com.silas.carneiro.movieflix.ui.detail.DetailActivity
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieFragment
+import br.com.silas.carneiro.movieflix.ui.home.more.MoreFragment
 import br.com.silas.carneiro.movieflix.ui.home.search.SearchFragment
 import br.com.silas.carneiro.movieflix.ui.login.LoginActivity
 import br.com.silas.carneiro.movieflix.ui.register.RegisterActivity
@@ -29,4 +30,5 @@ interface ActivityComponent {
 
     fun inject(fragment: HomeMovieFragment)
     fun inject(fragment: SearchFragment)
+    fun inject(fragment: MoreFragment)
 }

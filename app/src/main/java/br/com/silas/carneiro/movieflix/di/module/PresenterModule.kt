@@ -5,6 +5,8 @@ import br.com.silas.carneiro.movieflix.ui.detail.DetailContract
 import br.com.silas.carneiro.movieflix.ui.detail.DetailPresenter
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMoviePresenter
+import br.com.silas.carneiro.movieflix.ui.home.more.MoreContract
+import br.com.silas.carneiro.movieflix.ui.home.more.MorePresenter
 import br.com.silas.carneiro.movieflix.ui.home.search.SearchContract
 import br.com.silas.carneiro.movieflix.ui.home.search.SearchPresenter
 import br.com.silas.carneiro.movieflix.ui.login.LoginContract
@@ -48,4 +50,9 @@ class PresenterModule {
     @PerActivity
     fun provideDetailPresenter(interactor: DetailContract.Interactor):
             DetailContract.Presenter<DetailContract.View, DetailContract.Interactor> = DetailPresenter(interactor)
+
+    @Provides
+    @PerActivity
+    fun provideMorePresenter(interactor: MoreContract.Interactor):
+            MoreContract.Presenter<MoreContract.View, MoreContract.Interactor> =  MorePresenter(interactor)
 }

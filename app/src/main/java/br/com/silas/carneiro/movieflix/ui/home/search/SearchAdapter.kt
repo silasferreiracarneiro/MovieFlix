@@ -31,13 +31,6 @@ class SearchAdapter(var movie: MovieResponse): RecyclerView.Adapter<SearchAdapte
         if(itemCount > 0) {
             val item = movie.results[position]
             holder.title.text = item.title
-
-            holder.play.setOnClickListener {
-                val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-                intent.putExtra(ITEM_SEARCH_MOVIE, item)
-                holder.itemView.context.startActivity(intent)
-            }
-
             loadPhoto(item.posterPath, holder)
         }
     }
@@ -54,7 +47,6 @@ class SearchAdapter(var movie: MovieResponse): RecyclerView.Adapter<SearchAdapte
 
     class SearchViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val photo: ImageView = itemView.findViewById(R.id.imgMovie)
-        val play: ImageView = itemView.findViewById(R.id.imgPlay)
         val title: TextView = itemView.findViewById(R.id.txtTitle)
     }
 }

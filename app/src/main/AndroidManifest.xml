@@ -18,11 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoBar">
+        <activity android:name=".ui.profile.ProfileActivity"></activity>
         <activity
             android:name=".ui.play.PlayMovieActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_play_movie"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
         <activity android:name=".ui.detail.DetailActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
