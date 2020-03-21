@@ -8,13 +8,17 @@
     android:background="@color/colorGray"
     tools:context=".ui.register.RegisterActivity">
 
+    <include
+        android:id="@+id/toolbar_register"
+        layout="@layout/toolbar" />
+
     <EditText
         android:id="@+id/edtNome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="20dp"
-        android:autofillHints=""
         android:background="@drawable/background_text"
         android:ems="10"
         android:hint="@string/nome"
@@ -25,8 +29,8 @@
         app:layout_constraintBottom_toTopOf="@+id/edtEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.100000024"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_register"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed" />
     <EditText
         android:id="@+id/edtEmail"

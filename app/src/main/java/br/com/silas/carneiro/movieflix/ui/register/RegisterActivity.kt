@@ -5,6 +5,7 @@ import android.view.View
 import br.com.silas.carneiro.movieflix.R
 import br.com.silas.carneiro.movieflix.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
 class RegisterActivity : BaseActivity(), RegisterContract.View {
@@ -18,6 +19,13 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
         getActivityComponent().inject(this)
         presenter.onAttach(this)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.title = getString(R.string.title_registry)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
     override fun getAccountList() {

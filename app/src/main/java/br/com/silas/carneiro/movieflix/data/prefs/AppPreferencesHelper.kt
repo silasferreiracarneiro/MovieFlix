@@ -32,7 +32,7 @@ class AppPreferencesHelper @Inject constructor(@ApplicationContext context: Cont
     }
 
     override fun getFirstLogin(): Boolean {
-        return mPrefs.run { getBoolean(FIRST_LOGIN, false) }
+        return mPrefs.run { getBoolean(FIRST_LOGIN, true) }
     }
 
     override fun setFirstLogin(firstLogin: Boolean) {

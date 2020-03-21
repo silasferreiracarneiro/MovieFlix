@@ -4,6 +4,8 @@ import br.com.silas.carneiro.movieflix.data.firebase.contract.ApiServiceFirebase
 import br.com.silas.carneiro.movieflix.data.network.contract.ApiContract
 import br.com.silas.carneiro.movieflix.data.prefs.PreferencesHelper
 import br.com.silas.carneiro.movieflix.di.PerActivity
+import br.com.silas.carneiro.movieflix.ui.caroussel.CarousselContract
+import br.com.silas.carneiro.movieflix.ui.caroussel.CarousselInteract
 import br.com.silas.carneiro.movieflix.ui.detail.DetailContract
 import br.com.silas.carneiro.movieflix.ui.detail.DetailInteractor
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
@@ -51,4 +53,8 @@ class InteractorModule {
     @Provides
     @PerActivity
     fun provideMore(api: ApiServiceFirebaseContract): MoreContract.Interactor = MoreInteractor(api)
+
+    @Provides
+    @PerActivity
+    fun provideCaroussel(apiPref: PreferencesHelper): CarousselContract.Interactor = CarousselInteract(apiPref)
 }

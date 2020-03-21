@@ -19,8 +19,16 @@ class SplashPresenter<V: SplashContract.View, I: SplashContract.Interactor>
         interactorSplash.getUserLogin(onSucess = {
             getMvpView().goToHome()
         }, onError = {
-            getMvpView().showMessage(it)
-            getMvpView().goToLogin()
+            isFirstLogin(it)
         })
+    }
+
+    private fun isFirstLogin(message: String){
+        if(interactorSplash.getFirstAccess()){
+            getMvpView().goToCaroussel()
+        }else{
+            getMvpView().showMessage(message)
+            getMvpView().goToLogin()
+        }
     }
 }

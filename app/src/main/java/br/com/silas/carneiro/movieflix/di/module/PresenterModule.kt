@@ -1,6 +1,8 @@
 package br.com.silas.carneiro.movieflix.di.module
 
 import br.com.silas.carneiro.movieflix.di.PerActivity
+import br.com.silas.carneiro.movieflix.ui.caroussel.CarousselContract
+import br.com.silas.carneiro.movieflix.ui.caroussel.CarousselPresenter
 import br.com.silas.carneiro.movieflix.ui.detail.DetailContract
 import br.com.silas.carneiro.movieflix.ui.detail.DetailPresenter
 import br.com.silas.carneiro.movieflix.ui.home.homeMovie.HomeMovieContract
@@ -55,4 +57,9 @@ class PresenterModule {
     @PerActivity
     fun provideMorePresenter(interactor: MoreContract.Interactor):
             MoreContract.Presenter<MoreContract.View, MoreContract.Interactor> =  MorePresenter(interactor)
+
+    @Provides
+    @PerActivity
+    fun provideCarousselPresenter(interactor: CarousselContract.Interactor):
+            CarousselContract.Presenter<CarousselContract.View, CarousselContract.Interactor> =  CarousselPresenter(interactor)
 }

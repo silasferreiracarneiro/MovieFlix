@@ -22,7 +22,6 @@
         <activity
             android:name=".ui.play.PlayMovieActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_play_movie"
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".ui.detail.DetailActivity" />
         <activity android:name=".ui.splash.SplashActivity">
@@ -35,6 +34,7 @@
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.caroussel.CarousselActivity" />
     </application>
 
 </manifest>

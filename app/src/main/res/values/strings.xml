@@ -21,9 +21,7 @@
     <string name="logout">Sair</string>
     <string name="date_release">Data da liberação: </string>
 
-    <string name="title_activity_play_movie">PlayMovieActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="error_trailer">Trailer não disponível!</string>
     <string name="error_open_movie">Erro ao abrir o vídeo!</string>
+    <string name="title_registry">Faça seu cadastro</string>
 </resources>

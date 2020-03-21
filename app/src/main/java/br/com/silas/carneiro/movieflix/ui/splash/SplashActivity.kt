@@ -15,6 +15,8 @@ class SplashActivity : BaseActivity(), SplashContract.View  {
     @Inject
     lateinit var presenter : SplashContract.Presenter<SplashContract.View, SplashContract.Interactor>
 
+    private val SPLASH_TIME_OUT:Long = 3000
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(br.com.silas.carneiro.movieflix.R.layout.activity_splash)
@@ -22,7 +24,9 @@ class SplashActivity : BaseActivity(), SplashContract.View  {
         getActivityComponent().inject(this)
         presenter.onAttach(this)
 
-        presenter.goToActivity()
+        Handler().postDelayed({
+            presenter.goToActivity()
+        }, SPLASH_TIME_OUT)
     }
 
     override fun goToHome() {
