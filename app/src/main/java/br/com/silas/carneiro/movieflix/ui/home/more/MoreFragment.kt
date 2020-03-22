@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.silas.carneiro.movieflix.R
 import br.com.silas.carneiro.movieflix.ui.base.BaseBottomSheetDialogFragment
+import br.com.silas.carneiro.movieflix.ui.login.LoginActivity
 import br.com.silas.carneiro.movieflix.ui.profile.ProfileActivity
 import kotlinx.android.synthetic.main.fragment_more.*
 import javax.inject.Inject
@@ -34,7 +35,7 @@ class MoreFragment : BaseBottomSheetDialogFragment(), MoreContract.View {
 
         navigation_view.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.logout -> presenter.logout()
+                R.id.logout -> logoutApp()
                 R.id.profile -> startActivity(Intent(context, ProfileActivity::class.java))
             }
              true
@@ -43,6 +44,12 @@ class MoreFragment : BaseBottomSheetDialogFragment(), MoreContract.View {
         close_imageview.setOnClickListener {
             this.dismiss()
         }
+    }
+
+    private fun logoutApp(){
+        presenter.logout()
+        startActivity(Intent(context, LoginActivity::class.java))
+        this.activity?.finish()
     }
 
     override fun setUp(view: View) {

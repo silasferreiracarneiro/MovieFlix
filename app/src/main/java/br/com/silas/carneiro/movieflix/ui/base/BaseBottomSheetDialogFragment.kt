@@ -1,12 +1,14 @@
 package br.com.silas.carneiro.movieflix.ui.base
 
 import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.app.ActivityCompat
@@ -42,21 +44,31 @@ abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment(), MvpV
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-
-        dialog.setOnShowListener { dialog ->
-            val d = dialog as BottomSheetDialog
-
-            val bottomSheet = d.findViewById<View>(R.id.design_bottom_sheet) as FrameLayout?
-            bottomSheet?.let {
-                val behavior = BottomSheetBehavior.from(it)
-                behavior.skipCollapsed = true
-                behavior.peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO
-                behavior.state = BottomSheetBehavior.STATE_EXPANDED
-            }
+        val dialog = super.onCreateDialog(savedInstanceState)
+        dialog.setOnShowListener { dialogInterface ->
+            val bottomSheetDialog = dialogInterface as BottomSheetDialog
+            setupFullHeight(bottomSheetDialog)
         }
-
         return dialog
+    }
+
+    private fun setupFullHeight(bottomSheetDialog: BottomSheetDialog) {
+        val bottomSheet = bottomSheetDialog.findViewById<View>(R.id.design_bottom_sheet) as FrameLayout?
+        val behavior: BottomSheetBehavior<*> = BottomSheetBehavior.from(bottomSheet)
+        val layoutParams = bottomSheet!!.layoutParams
+        val windowHeight = getWindowHeight()
+        if (layoutParams != null) {
+            layoutParams.height = windowHeight
+        }
+        bottomSheet.layoutParams = layoutParams
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+    }
+
+    private fun getWindowHeight(): Int {
+        val displayMetrics = DisplayMetrics()
+        (context as Activity?)!!.windowManager.defaultDisplay
+            .getMetrics(displayMetrics)
+        return displayMetrics.heightPixels
     }
 
     override fun onAttach(context: Context) {

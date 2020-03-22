@@ -24,4 +24,5 @@
     <string name="error_trailer">Trailer não disponível!</string>
     <string name="error_open_movie">Erro ao abrir o vídeo!</string>
     <string name="title_registry">Faça seu cadastro</string>
+    <string name="settings">Configurações</string>
 </resources>

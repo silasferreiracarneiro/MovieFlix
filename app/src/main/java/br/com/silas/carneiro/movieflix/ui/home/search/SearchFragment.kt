@@ -15,9 +15,10 @@ import br.com.silas.carneiro.movieflix.ui.base.BaseBottomSheetDialogFragment
 import br.com.silas.carneiro.movieflix.ui.detail.DetailActivity
 import br.com.silas.carneiro.movieflix.utils.AppConstant
 import br.com.silas.carneiro.movieflix.utils.RecyclerViewItemClickListener
-import kotlinx.android.synthetic.main.fragment_more.close_imageview
+import kotlinx.android.synthetic.main.fragment_more.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import javax.inject.Inject
+
 
 class SearchFragment : BaseBottomSheetDialogFragment(), SearchContract.View {
 

@@ -21,6 +21,7 @@ class HomeActivity : BaseActivity() {
         setContentView(R.layout.activity_home)
         setUpBottomAppBar()
         defaultFragment()
+
         fabSearch.setOnClickListener{
             val bottomNavDrawerFragment = SearchFragment()
             bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
