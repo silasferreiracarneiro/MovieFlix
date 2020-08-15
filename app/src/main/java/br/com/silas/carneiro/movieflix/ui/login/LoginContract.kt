@@ -10,6 +10,7 @@ interface LoginContract {
 
     interface View: MvpView {
         fun goHome()
+        fun emailOrPasswordInvalid()
     }
 
     interface Presenter<V: LoginContract.View, I: LoginContract.Interactor>: MvpPresenter<V, I> {

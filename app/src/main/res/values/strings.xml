@@ -25,4 +25,5 @@
     <string name="error_open_movie">Erro ao abrir o vídeo!</string>
     <string name="title_registry">Faça seu cadastro</string>
     <string name="settings">Configurações</string>
+    <string name="error_user_password">Usuário ou senha inválidos!</string>
 </resources>

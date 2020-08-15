@@ -18,6 +18,7 @@ import br.com.silas.carneiro.movieflix.utils.convertDate
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.toolbar_gradient.*
+import kotlinx.android.synthetic.main.view_header_movie.*
 import javax.inject.Inject
 
 class DetailActivity : BaseActivity(), DetailContract.View {

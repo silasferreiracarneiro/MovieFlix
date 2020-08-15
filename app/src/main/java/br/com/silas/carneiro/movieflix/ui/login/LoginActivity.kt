@@ -6,6 +6,7 @@ import br.com.silas.carneiro.movieflix.R
 import br.com.silas.carneiro.movieflix.ui.base.BaseActivity
 import br.com.silas.carneiro.movieflix.ui.home.HomeActivity
 import br.com.silas.carneiro.movieflix.ui.register.RegisterActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
@@ -34,5 +35,9 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun goHome() {
         startActivity(Intent(this, HomeActivity::class.java))
+    }
+
+    override fun emailOrPasswordInvalid() {
+        Snackbar.make(coordinatorLayout, getString(R.string.error_user_password), Snackbar.LENGTH_LONG).show()
     }
 }

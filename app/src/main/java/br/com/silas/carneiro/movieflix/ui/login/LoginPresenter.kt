@@ -20,6 +20,8 @@ class LoginPresenter<V: LoginContract.View, I: LoginContract.Interactor>
             }, onError = {
                 getMvpView().showMessage(it)
             })
+        } else {
+            getMvpView().emailOrPasswordInvalid()
         }
     }
 
@@ -30,10 +32,8 @@ class LoginPresenter<V: LoginContract.View, I: LoginContract.Interactor>
         }, onError = {
             getMvpView().showMessage("Erro ao efetuar o login.")
         })
-
     }
 
-    private fun validateLogin(email: String, password: String): Boolean {
-        return true
-    }
+    private fun validateLogin(email: String, password: String): Boolean =
+        !(email.isBlank() || password.isBlank() || email.isEmpty() || password.isEmpty())
 }
